@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-python-configmap
+  namespace: p8s1
+data:
+  telegram_notify.py: |
+    import os
+    import requests
+
+    data = os.getenv('DATA')
+    app_name = os.getenv('APP_NAME')
+    applied_domain = os.getenv('applied-domain')
+    print("Hello World")
+
+    bot = os.getenv('TELEGRAM_BOT_TOKEN')
+    chat_id = os.getenv('TELEGRAM_CHAT_ID')
+
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}'.format(
+        bot, chat_id, f"Hello World {data} from {app_name} ===> applied_domain ==> {applied_domain}")
+    requests.post(url=url, headers=headers).text

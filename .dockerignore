@@ -1,0 +1,9 @@
+kopf-locks
+__pycache__
+*.pyc
+*.log
+k8s
+.idea
+docker_password.txt
+Dockerfile
+*.md
