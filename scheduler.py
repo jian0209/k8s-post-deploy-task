@@ -97,7 +97,7 @@ def create_jobs(app_name: str, app_annotations: dict):
         return None
 
 
-def build_env_vars(raw_env: dict, app_name: str = "default-app") -> list:
+def build_env_vars(raw_env: list, app_name: str = "default-app") -> list:
     if not raw_env:
         return []
 
